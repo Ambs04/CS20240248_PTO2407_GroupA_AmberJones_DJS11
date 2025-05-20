@@ -1,0 +1,21 @@
+.pods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+}
+
+.pod-card {
+  width: 200px;
+  padding: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pod-img {
+  width: 100%;
+  justify-content: center;
+}
+
+.pod-title {
+  text-decoration: underline;
+}
