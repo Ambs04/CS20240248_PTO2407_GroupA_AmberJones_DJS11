@@ -1,0 +1,45 @@
+.header {
+  height: 170px;
+  width: 100vw;
+  margin-bottom: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid black;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 50px;
+}
+
+.logo {
+  width: 100px;
+  height: 90px;
+  object-fit: contain;
+
+  justify-self: start;
+  align-self: center;
+}
+
+.website-name {
+  margin: 50px 15px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bar {
+  justify-self: end;
+  align-self: center;
+  margin-left: auto;
+  margin-right: 90px;
+  height: 40px;
+  width: 200px;
+  border: 1px solid lightgrey;
+  border-radius: 15px;
+  background-color: lightgrey;
+  color: rgb(38, 37, 37);
+}
