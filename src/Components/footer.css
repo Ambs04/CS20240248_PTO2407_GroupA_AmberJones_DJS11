@@ -1,0 +1,19 @@
+.footer-container {
+  height: 170px;
+  width: 100vw;
+  margin-top: 70px;
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-info {
+  height: 90px;
+  width: 150px;
+  margin: auto auto;
+}
+
+.footer-text {
+  text-align: center;
+  margin-top: 35px;
+}

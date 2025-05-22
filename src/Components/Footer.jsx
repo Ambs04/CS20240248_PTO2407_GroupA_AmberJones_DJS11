@@ -1,3 +1,5 @@
+import "./footer.css";
+
 export default function Footer() {
   const date = new Date();
   const year = date.getFullYear();
@@ -6,7 +8,7 @@ export default function Footer() {
     <>
       <div className="footer-container">
         <div className="footer-info">
-          <p>©PodStar {year}</p>
+          <p className="footer-text">© PodStar {year}</p>
         </div>
       </div>
     </>
