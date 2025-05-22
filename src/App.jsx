@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Layout from "./Components/Layout";
+import Podcast from "./Pages/Podcast";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            {/* <Route path="/"/> */}
+            <Route path="podcast/:id" element={<Podcast />} />
           </Route>
         </Routes>
       </BrowserRouter>
