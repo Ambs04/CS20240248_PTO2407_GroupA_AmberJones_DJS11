@@ -1,9 +1,12 @@
 export default function Footer() {
+  const date = new Date();
+  const year = date.getFullYear();
+
   return (
     <>
-      <div>
-        <div>
-          <p>© PodStar</p>
+      <div className="footer-container">
+        <div className="footer-info">
+          <p>©PodStar {year}</p>
         </div>
       </div>
     </>

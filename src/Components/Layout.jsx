@@ -1,5 +1,6 @@
 import Home from "../Pages/Home";
 import Header from "./Header";
+import Footer from "./Footer";
 //import {Outlet} from "react-router-dom";
 
 export default function Layout() {
@@ -7,6 +8,7 @@ export default function Layout() {
     <>
       <Header />
       <Home />
+      <Footer />
     </>
   );
 }
