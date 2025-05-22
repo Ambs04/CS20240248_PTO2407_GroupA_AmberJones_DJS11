@@ -21,13 +21,15 @@ export default function Home() {
       {/* <Header /> */}
       <div className="pods">
         {podState.map((pods) => (
-          <Link to={`/podcast/${pods.id}`} key={pods.id} className="pod-card">
-            <img src={pods.image} alt="podcast image" className="pod-img" />
+          <div key={pods.id} className="pod-card">
+            <Link to={`/podcast/${pods.id}`}>
+              <img src={pods.image} alt="podcast image" className="pod-img" />
+            </Link>
             <div>
               <h3 className="pod-title">{pods.title}</h3>
               <p className="pod-desc">{pods.description.slice(0, 200)} ...</p>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
       {/* <Footer /> */}
