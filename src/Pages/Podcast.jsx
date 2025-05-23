@@ -1,3 +1,4 @@
+import "./podcast.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -19,16 +20,21 @@ export default function Podcast() {
 
   return (
     <>
-      <div>
-        <div>
-          <img src={podcast.image} />
+      <div className="container">
+        <div className="image-container">
+          <img src={podcast.image} className="image" />
         </div>
-        <h2>{podcast.title}</h2>
-        <p>{podcast.description}</p>
+        <div className="info">
+          <h2 className="title">{podcast.title}</h2>
+          <p className="description">{podcast.description}</p>
 
-        {podcast.updated && (
-          <p>{new Date(podcast.updated).toLocaleDateString("en-ZA")}</p>
-        )}
+          {podcast.updated && (
+            <p className="updated-date">
+              Last updated:{" "}
+              {new Date(podcast.updated).toLocaleDateString("en-ZA")}
+            </p>
+          )}
+        </div>
       </div>
     </>
   );
