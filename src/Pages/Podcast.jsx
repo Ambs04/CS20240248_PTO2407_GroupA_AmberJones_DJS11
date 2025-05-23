@@ -6,17 +6,26 @@ export default function Podcast() {
   const { id } = useParams();
 
   const [podcast, setPodcast] = useState([]);
+  // const [seasons, setSeasons] = useState([]);
+  //const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/")
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         const selectedId = data.find((podcast) => podcast.id === id);
         setPodcast(selectedId);
       });
   }, [id]);
 
-  //const updatedDate = ;
+  //   useEffect(() => {
+  //     fetch("https://podcast-api.netlify.app/:id")
+  //       .then((res) => res.json())
+  //       .then((data) => console.log(data));
+  //     //const selectedId = data.find((podcast) => podcast.id === id);
+  //     //setPodcast(selectedId);
+  //   });
 
   return (
     <>
