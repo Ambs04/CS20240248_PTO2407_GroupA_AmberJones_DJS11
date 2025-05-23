@@ -11,14 +11,13 @@ export default function Home() {
     fetch("https://podcast-api.netlify.app/")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setPodState(data);
+        const sortData = data.sort((a, b) => a.title.localeCompare(b.title));
+        setPodState(sortData);
       });
   }, []);
 
   return (
     <>
-      {/* <Header /> */}
       <div className="pods">
         {podState.map((pods) => (
           <div key={pods.id} className="pod-card">
@@ -32,7 +31,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-      {/* <Footer /> */}
     </>
   );
 }
