@@ -35,10 +35,13 @@
 }
 
 .title {
+  text-decoration: underline;
 }
 
-.description {
-}
+/* .description {
+
+} */
 
 .updated-date {
+  font-weight: bold;
 }
