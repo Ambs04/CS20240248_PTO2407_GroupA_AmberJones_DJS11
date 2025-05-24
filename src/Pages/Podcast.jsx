@@ -6,26 +6,25 @@ export default function Podcast() {
   const { id } = useParams();
 
   const [podcast, setPodcast] = useState([]);
-  // const [seasons, setSeasons] = useState([]);
-  //const [genres, setGenres] = useState([]);
+  const [seasons, setSeasons] = useState([]);
 
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const selectedId = data.find((podcast) => podcast.id === id);
         setPodcast(selectedId);
       });
   }, [id]);
 
-  //   useEffect(() => {
-  //     fetch("https://podcast-api.netlify.app/:id")
-  //       .then((res) => res.json())
-  //       .then((data) => console.log(data));
-  //     //const selectedId = data.find((podcast) => podcast.id === id);
-  //     //setPodcast(selectedId);
-  //   });
+  useEffect(() => {
+    fetch(`https://podcast-api.netlify.app/id/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setSeasons(data.seasons);
+      });
+  }, [id]);
 
   return (
     <>
@@ -43,6 +42,16 @@ export default function Podcast() {
               {new Date(podcast.updated).toLocaleDateString("en-ZA")}
             </p>
           )}
+        </div>
+        <div>
+          {seasons.map((season) => (
+            <>
+              <div key={season.id}>
+                <h2>Season {season.season}:</h2>
+                <h3>{season.title}</h3>
+              </div>
+            </>
+          ))}
         </div>
       </div>
     </>

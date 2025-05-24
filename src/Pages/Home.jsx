@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./home.css";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
+// import Header from "../Components/Header";
+// import Footer from "../Components/Footer";
 import { Link } from "react-router-dom";
 
 export default function Home() {
