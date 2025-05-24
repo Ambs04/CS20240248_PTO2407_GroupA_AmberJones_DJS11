@@ -50,6 +50,13 @@ export default function Podcast() {
                 <h2>Season {season.season}:</h2>
                 <h3>{season.title}</h3>
               </div>
+              {season.episodes.map((episode) => (
+                <div key={episode.id}>
+                  <p>Episode{episode.episode}</p>
+                  <h3>{episode.title}</h3>
+                  <p>{episode.description}</p>
+                </div>
+              ))}
             </>
           ))}
         </div>
