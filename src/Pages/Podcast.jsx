@@ -28,7 +28,8 @@ export default function Podcast() {
 
   return (
     <>
-      <div className="container">
+      {/* <div className="container"> */}
+      <div className="pod-container">
         <div className="image-container">
           <img src={podcast.image} className="image" />
         </div>
@@ -43,15 +44,14 @@ export default function Podcast() {
             </p>
           )}
         </div>
-        <div>
+        <div className="show">
           {seasons.map((season) => (
             <>
-              <div key={season.id}>
+              <div key={season.id} className="seasons">
                 <h2>Season {season.season}:</h2>
-                <h3>{season.title}</h3>
               </div>
               {season.episodes.map((episode) => (
-                <div key={episode.id}>
+                <div key={episode.id} className="episodes">
                   <p>Episode{episode.episode}</p>
                   <h3>{episode.title}</h3>
                   <p>{episode.description}</p>
@@ -61,6 +61,7 @@ export default function Podcast() {
           ))}
         </div>
       </div>
+      {/* </div> */}
     </>
   );
 }

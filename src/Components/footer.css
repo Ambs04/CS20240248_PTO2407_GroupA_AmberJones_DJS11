@@ -1,6 +1,6 @@
 .footer-container {
   width: 100vw;
-  height: fit-content;
+  height: 15vh;
   margin-top: auto;
   border-top: 1px solid black;
   display: flex;
