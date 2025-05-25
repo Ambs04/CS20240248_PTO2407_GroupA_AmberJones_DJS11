@@ -43,6 +43,7 @@ export default function Podcast() {
               {new Date(podcast.updated).toLocaleDateString("en-ZA")}
             </p>
           )}
+          <img src="play-button-svgrepo-com.svg" />
         </div>
         <div className="show">
           {seasons.map((season) => (
