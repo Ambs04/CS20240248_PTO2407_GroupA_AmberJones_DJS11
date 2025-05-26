@@ -2,8 +2,10 @@ import "./podcast.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 //import Player from "../Components/Player";
+//import { AudioPlayer } from "react-audio-play";
+//import Player from "../Components/Player";
 
-export default function Podcast() {
+export default function Podcast({ onPlay }) {
   const { id } = useParams();
 
   const [podcast, setPodcast] = useState([]);
@@ -45,7 +47,14 @@ export default function Podcast() {
             </p>
           )}
 
-          <img src="/play-button-svgrepo-com.svg" className="play-btn" />
+          <img
+            src="/play-button-svgrepo-com.svg"
+            className="play-btn"
+            onClick={() => {
+              console.log("clicked");
+              onPlay("/Dont_Go_Way_Nobody.mp3");
+            }}
+          />
         </div>
         <div className="show">
           {seasons.map((season) => (
