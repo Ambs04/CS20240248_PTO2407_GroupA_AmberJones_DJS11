@@ -3,17 +3,21 @@ import "./home.css";
 
 import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Home({ sortingOrder }) {
   const [podState, setPodState] = useState([]);
 
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/")
       .then((res) => res.json())
       .then((data) => {
-        const sortData = data.sort((a, b) => a.title.localeCompare(b.title));
+        const sortData = [...data].sort((a, b) =>
+          sortingOrder === "A-Z"
+            ? a.title.localeCompare(b.title)
+            : b.title.localeCompare(a.title)
+        );
         setPodState(sortData);
       });
-  }, []);
+  }, [sortingOrder]);
 
   return (
     <>

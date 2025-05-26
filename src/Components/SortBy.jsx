@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function SortBy() {
+export default function SortBy({ setSortingOrder }) {
   // //set state
   const [genres, setGenres] = useState([]);
 
@@ -35,11 +35,17 @@ export default function SortBy() {
   }, []);
 
   return (
-    <div>
-      {/* map over the genre state and produce a button for each genre type */}
-      {genres.map((genre) => (
-        <button key={genre}>{genre}</button>
-      ))}
-    </div>
+    <>
+      <div>
+        {/* map over the genre state and produce a button for each genre type */}
+        {genres.map((genre) => (
+          <button key={genre}>{genre}</button>
+        ))}
+      </div>
+      <div>
+        <button onClick={() => setSortingOrder("A-Z")}>Sort A to Z</button>
+        <button onClick={() => setSortingOrder("Z-A")}> Sort Z to A</button>
+      </div>
+    </>
   );
 }
