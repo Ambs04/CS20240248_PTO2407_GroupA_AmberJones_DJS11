@@ -27,6 +27,7 @@ export default function Home() {
             <div>
               <h3 className="pod-title">{pods.title}</h3>
               <p className="pod-desc">{pods.description.slice(0, 200)} ...</p>
+              <p>Seasons Available: {pods.seasons}</p>
             </div>
           </div>
         ))}
