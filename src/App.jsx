@@ -7,11 +7,13 @@ import Player from "./Components/Player";
 import { useState } from "react";
 
 function App() {
-  const [audio, setAudio] = useState("");
+  const [audio] = useState("/Dont_Go_Way_Nobody.mp3");
+  const [playKey, setPlayKey] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
-  const play = (src) => {
-    setAudio(src);
+  const play = () => {
+    setIsActive(false);
+    setPlayKey((prev) => prev + 1);
     setIsActive(true);
   };
 
@@ -24,7 +26,7 @@ function App() {
             <Route path="podcast/:id" element={<Podcast onPlay={play} />} />
           </Route>
         </Routes>
-        {isActive && <Player src={audio} />}
+        {isActive && <Player key={playKey} src={audio} />}
       </BrowserRouter>
     </>
   );

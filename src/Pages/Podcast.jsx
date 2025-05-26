@@ -59,7 +59,7 @@ export default function Podcast({ onPlay }) {
             <>
               <button
                 key={season.id}
-                className="seasons"
+                className={selectedSeason?.id === season.id ? "active" : ""}
                 onClick={() => setSelectedSeason(season)}
               >
                 <>Season {season.season}:</>
@@ -69,6 +69,9 @@ export default function Podcast({ onPlay }) {
                   <p>Episode{episode.episode}</p>
                   <h3>{episode.title}</h3>
                   <p>{episode.description}</p>
+                  <button onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}>
+                    Play Epidsode
+                  </button>
                 </div>
               ))}
             </>
