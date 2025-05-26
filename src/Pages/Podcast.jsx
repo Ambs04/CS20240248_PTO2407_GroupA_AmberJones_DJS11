@@ -22,6 +22,7 @@ export default function Podcast({ onPlay }) {
     fetch(`https://podcast-api.netlify.app/id/${id}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data.seasons);
         setSeasons(data.seasons);
         selectedSeason(data.seasons);
       });
