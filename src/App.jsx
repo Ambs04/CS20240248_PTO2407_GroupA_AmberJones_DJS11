@@ -3,19 +3,21 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Layout from "./Components/Layout";
 import Podcast from "./Pages/Podcast";
+import Player from "./Components/Player";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="podcast/:id" element={<Podcast />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+    // <>
+    //   <BrowserRouter>
+    //     <Routes>
+    //       <Route path="/" element={<Layout />}>
+    //         <Route index element={<Home />} />
+    //         <Route path="podcast/:id" element={<Podcast />} />
+    //       </Route>
+    //     </Routes>
+    //   </BrowserRouter>
+    <Player />
+    // </>
   );
 }
 

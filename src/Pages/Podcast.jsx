@@ -1,6 +1,7 @@
 import "./podcast.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+//import Player from "../Components/Player";
 
 export default function Podcast() {
   const { id } = useParams();
@@ -43,7 +44,8 @@ export default function Podcast() {
               {new Date(podcast.updated).toLocaleDateString("en-ZA")}
             </p>
           )}
-          <img src="play-button-svgrepo-com.svg" />
+
+          <img src="/play-button-svgrepo-com.svg" className="play-btn" />
         </div>
         <div className="show">
           {seasons.map((season) => (
