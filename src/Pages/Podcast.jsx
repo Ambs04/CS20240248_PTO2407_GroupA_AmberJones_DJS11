@@ -32,6 +32,7 @@ export default function Podcast({ onPlay }) {
     //create object which will retrieve the necessary info when episode is added to favourites, and store in localStorage
     const favourite = {
       id: episode.id,
+      image: season.image,
       episodeTitle: episode.title,
       episodeDesc: episode.description,
       season: season.season,

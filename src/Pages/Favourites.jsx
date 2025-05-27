@@ -10,5 +10,20 @@ export default function Favourites() {
     setFavourites(storage);
   }, []);
 
-  return <h1>favourites</h1>;
+  return (
+    <>
+      <div>
+        {/* map through the favourites to display favourites' item's info */}
+        {favourites.map((faves) => (
+          <div key={faves.id}>
+            <h2>{faves.showTitle}</h2>
+            <img src={faves.image} />
+            <h3>{faves.episodeTitle}</h3>
+            <p>Season {faves.season}</p>
+            <p>{faves.episodeDesc}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
 }
