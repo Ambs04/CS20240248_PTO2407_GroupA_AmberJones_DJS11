@@ -11,6 +11,11 @@ export default function Header() {
           </Link>
           <h2 className="website-name">PodStar</h2>
         </div>
+        <div>
+          <Link to="favourites">
+            <h3>Favourites</h3>
+          </Link>
+        </div>
         <div className="search-container">
           <input type="text" placeholder="search" className="search-bar" />
         </div>

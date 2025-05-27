@@ -5,6 +5,7 @@ import Layout from "./Components/Layout";
 import Podcast from "./Pages/Podcast";
 import Player from "./Components/Player";
 import { useState } from "react";
+import Favourites from "./Pages/Favourites";
 //import SortBy from "./Components/SortBy";
 
 function App() {
@@ -38,6 +39,10 @@ function App() {
               }
             />
             <Route path="podcast/:id" element={<Podcast onPlay={play} />} />
+            <Route path="favourites" element={<Favourites />} />
+            {/* <Route index element={<FavouritesHome/>}/>
+           <Route path="favourites/podcast/:id" element={<FavouritesPodcast/>}/> */}
+            {/* </Route> */}
           </Route>
         </Routes>
         {isActive && <Player key={playKey} src={audio} />}
