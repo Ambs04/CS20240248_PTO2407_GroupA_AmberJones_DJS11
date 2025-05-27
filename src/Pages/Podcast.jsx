@@ -50,7 +50,6 @@ export default function Podcast({ onPlay }) {
             src="/play-button-svgrepo-com.svg"
             className="play-btn"
             onClick={() => {
-              console.log("clicked");
               onPlay("/Dont_Go_Way_Nobody.mp3");
             }}
           />

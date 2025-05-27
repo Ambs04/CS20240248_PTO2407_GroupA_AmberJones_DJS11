@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Layout from "./Components/Layout";
 import Podcast from "./Pages/Podcast";
-// import Player from "./Components/Player";
+import Player from "./Components/Player";
 import { useState } from "react";
 //import SortBy from "./Components/SortBy";
 
