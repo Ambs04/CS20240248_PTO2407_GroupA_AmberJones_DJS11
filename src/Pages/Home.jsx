@@ -3,21 +3,41 @@ import "./home.css";
 
 import { Link } from "react-router-dom";
 
-export default function Home({ sortingOrder }) {
+export default function Home({ sortingOrder, genreFilter }) {
   const [podState, setPodState] = useState([]);
 
   useEffect(() => {
-    fetch("https://podcast-api.netlify.app/")
-      .then((res) => res.json())
-      .then((data) => {
-        const sortData = [...data].sort((a, b) =>
-          sortingOrder === "A-Z"
-            ? a.title.localeCompare(b.title)
-            : b.title.localeCompare(a.title)
-        );
-        setPodState(sortData);
-      });
-  }, [sortingOrder]);
+    const fetchData = async () => {
+      const res = await fetch("https://podcast-api.netlify.app/");
+      const data = await res.json();
+
+      const filterData = await Promise.all(
+        data.map((show) =>
+          fetch(`https://podcast-api.netlify.app/id/${show.id}`).then((res) =>
+            res.json()
+          )
+        )
+      );
+
+      const filter = genreFilter
+        ? data.filter((show) => {
+            const details = filterData.find((d) => d.id === show.id);
+            return (
+              details && details.genres && details.genres.includes(genreFilter)
+            );
+          })
+        : data;
+
+      const sortData = [...filter].sort((a, b) =>
+        sortingOrder === "A-Z"
+          ? a.title.localeCompare(b.title)
+          : b.title.localeCompare(a.title)
+      );
+
+      setPodState(sortData);
+    };
+    fetchData();
+  }, [sortingOrder, genreFilter]);
 
   return (
     <>

@@ -5,7 +5,7 @@ import Layout from "./Components/Layout";
 import Podcast from "./Pages/Podcast";
 // import Player from "./Components/Player";
 import { useState } from "react";
-import SortBy from "./Components/SortBy";
+//import SortBy from "./Components/SortBy";
 
 function App() {
   const [audio] = useState("/Dont_Go_Way_Nobody.mp3");
@@ -13,6 +13,7 @@ function App() {
   const [isActive, setIsActive] = useState(false);
 
   const [sortingOrder, setSortingOrder] = useState("A-Z");
+  const [genreFilter, setGenreFilter] = useState([]);
 
   const play = () => {
     setIsActive(false);
@@ -26,9 +27,19 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Layout setSortingOrder={setSortingOrder} />}
+            element={
+              <Layout
+                setSortingOrder={setSortingOrder}
+                setGenreFilter={setGenreFilter}
+              />
+            }
           >
-            <Route index element={<Home sortingOrder={sortingOrder} />} />
+            <Route
+              index
+              element={
+                <Home sortingOrder={sortingOrder} genreFilter={genreFilter} />
+              }
+            />
             <Route path="podcast/:id" element={<Podcast onPlay={play} />} />
           </Route>
         </Routes>

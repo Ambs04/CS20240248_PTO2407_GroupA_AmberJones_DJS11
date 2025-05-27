@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function SortBy({ setSortingOrder }) {
+export default function SortBy({ setSortingOrder, setGenreFilter }) {
   // //set state
   const [genres, setGenres] = useState([]);
 
@@ -39,7 +39,9 @@ export default function SortBy({ setSortingOrder }) {
       <div>
         {/* map over the genre state and produce a button for each genre type */}
         {genres.map((genre) => (
-          <button key={genre}>{genre}</button>
+          <button key={genre} onClick={() => setGenreFilter(genre)}>
+            {genre}
+          </button>
         ))}
       </div>
       <div>
