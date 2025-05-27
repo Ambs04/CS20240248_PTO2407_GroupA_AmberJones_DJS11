@@ -82,7 +82,7 @@ export default function Podcast({ onPlay }) {
                 className={selectedSeason?.id === season.id ? "active" : ""}
                 onClick={() => setSelectedSeason(season)}
               >
-                <>Season {season.season}:</>
+                <div>Season {season.season}:</div>
               </button>
               {season.episodes.map((episode) => (
                 <div key={episode.id} className="episodes">
@@ -90,14 +90,14 @@ export default function Podcast({ onPlay }) {
                   <h3>{episode.title}</h3>
                   <p>{episode.description}</p>
                   <button onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}>
-                    <button
-                      onClick={() =>
-                        handleFaves(episode, podcast, selectedSeason)
-                      }
-                    >
-                      Add to Favourites
-                    </button>
                     Play Epidsode
+                  </button>
+                  <button
+                    onClick={() =>
+                      handleFaves(episode, podcast, selectedSeason)
+                    }
+                  >
+                    Add to Favourites
                   </button>
                 </div>
               ))}
