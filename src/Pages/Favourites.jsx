@@ -10,6 +10,15 @@ export default function Favourites() {
     setFavourites(storage);
   }, []);
 
+  const removeFave = (id) => {
+    //filter over favourites and find the id, if the item id is equal to the id that must be removed, it will be removed else it will keep the item
+    const remove = favourites.filter((fave) => fave.id !== id);
+    //update the local storage
+    localStorage.setItem("favourites", JSON.stringify(remove));
+    //update favourites state
+    setFavourites(remove);
+  };
+
   return (
     <>
       <div>
@@ -21,6 +30,9 @@ export default function Favourites() {
             <h3>{faves.episodeTitle}</h3>
             <p>Season {faves.season}</p>
             <p>{faves.episodeDesc}</p>
+            <button onClick={() => removeFave(faves.id)}>
+              Remove from favourites
+            </button>
           </div>
         ))}
       </div>
