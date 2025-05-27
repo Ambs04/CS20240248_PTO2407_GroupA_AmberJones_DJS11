@@ -22,9 +22,8 @@ export default function Podcast({ onPlay }) {
     fetch(`https://podcast-api.netlify.app/id/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.seasons);
         setSeasons(data.seasons);
-        selectedSeason(data.seasons[0]);
+        setSelectedSeason(data.seasons[0]);
       });
   }, [id]);
 
@@ -45,14 +44,15 @@ export default function Podcast({ onPlay }) {
               {new Date(podcast.updated).toLocaleDateString("en-ZA")}
             </p>
           )}
-
-          <img
-            src="/play-button-svgrepo-com.svg"
-            className="play-btn"
-            onClick={() => {
-              onPlay("/Dont_Go_Way_Nobody.mp3");
-            }}
-          />
+          <span>
+            <img
+              src="/play-button-svgrepo-com.svg"
+              className="play-btn"
+              onClick={() => {
+                onPlay("/Dont_Go_Way_Nobody.mp3");
+              }}
+            />
+          </span>
         </div>
         <div className="show">
           {seasons.map((season) => (
@@ -70,6 +70,7 @@ export default function Podcast({ onPlay }) {
                   <h3>{episode.title}</h3>
                   <p>{episode.description}</p>
                   <button onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}>
+                    <button>Add to Favourites</button>
                     Play Epidsode
                   </button>
                 </div>

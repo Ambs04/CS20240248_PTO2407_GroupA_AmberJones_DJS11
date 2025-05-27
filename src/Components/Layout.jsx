@@ -8,11 +8,6 @@ export default function Layout({ children }) {
     <>
       <Header />
 
-      {/* <SortBy
-        setSortingOrder={setSortingOrder}
-        setGenreFilter={setGenreFilter}
-      /> */}
-
       <Outlet />
 
       <Footer />

@@ -19,11 +19,6 @@ export default function Header() {
         <div className="search-container">
           <input type="text" placeholder="search" className="search-bar" />
         </div>
-        {/* <span className="mode-toggle">
-                    <div className="top"></div>
-                    <div className="middle"></div>
-                    <div className="bottom"></div>
-                </span> */}
       </div>
     </>
   );
