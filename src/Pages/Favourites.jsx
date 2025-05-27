@@ -19,26 +19,39 @@ export default function Favourites() {
     setFavourites(remove);
   };
 
+  //   const filterFavourites = favourites
+  //     .filter((fave) => {
+  //       if (!genreFilter) return fave.genres && fave.genres.includes(genreFilter);
+  //     })
+  //     .sort((a, b) =>
+  //       sortingOrder === "A-Z"
+  //         ? a.episodeTitle.localeCompare(b.episodeTitle)
+  //         : b.episodeTitle.localeCompare(a.episodeTitle)
+  //     );
+
   return (
-    //if there are no favourites, display p tag otherwise display the favourites episode
-    <div>
-      <h2>Favourites:</h2>
-      {favourites.length === 0 ? (
-        <p>You have no favourites yet.</p>
-      ) : (
-        favourites.map((faves) => (
-          <div key={faves.id}>
-            <h2>{faves.showTitle}</h2>
-            <img src={faves.image} />
-            <h3>{faves.episodeTitle}</h3>
-            <p>Season {faves.season}</p>
-            <p>{faves.episodeDesc}</p>
-            <button onClick={() => removeFave(faves.id)}>
-              Remove from favourites
-            </button>
-          </div>
-        ))
-      )}
-    </div>
+    <>
+      {/* //if there are no favourites, display p tag otherwise display the
+      favourites episode */}
+      <div>
+        <h2>Favourites:</h2>
+        {favourites.length === 0 ? (
+          <p>You have no favourites yet.</p>
+        ) : (
+          favourites.map((faves) => (
+            <div key={faves.id}>
+              <h2>{faves.showTitle}</h2>
+              <img src={faves.image} />
+              <h3>{faves.episodeTitle}</h3>
+              <p>Season {faves.season}</p>
+              <p>{faves.episodeDesc}</p>
+              <button onClick={() => removeFave(faves.id)}>
+                Remove from favourites
+              </button>
+            </div>
+          ))
+        )}
+      </div>
+    </>
   );
 }
