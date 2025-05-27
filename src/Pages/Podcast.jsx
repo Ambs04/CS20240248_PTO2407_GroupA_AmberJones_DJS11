@@ -38,6 +38,7 @@ export default function Podcast({ onPlay }) {
       season: season.season,
       showId: podcast.id,
       showTitle: podcast.title,
+      timeStamp: Date.now(),
     };
 
     //get the existing favourites from localStorage and parse them to 'favourites'

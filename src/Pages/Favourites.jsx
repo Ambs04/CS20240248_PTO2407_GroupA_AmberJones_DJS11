@@ -43,6 +43,7 @@ export default function Favourites() {
             <h3>{faves.episodeTitle}</h3>
             <p>Season {faves.season}</p>
             <p>{faves.episodeDesc}</p>
+            <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>
             <button onClick={() => removeFave(faves.id)}>
               Remove from favourites
             </button>
