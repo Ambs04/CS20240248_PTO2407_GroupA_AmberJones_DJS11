@@ -27,6 +27,25 @@ export default function Podcast({ onPlay }) {
       });
   }, [id]);
 
+  //function to handle the favourites - takes episode, podcast and season as parameters
+  const handleFaves = (episode, podcast, season) => {
+    //create object which will retrieve the necessary info when episode is added to favourites, and store in localStorage
+    const favourite = {
+      id: episode.id,
+      episodeTitle: episode.title,
+      episodeDesc: episode.description,
+      season: season.season,
+      showId: podcast.id,
+      showTitle: podcast.title,
+    };
+
+    //get the existing favourites from localStorage and parse them to 'favourites'
+    const favesList = JSON.parse(localStorage.getItem("favourites"));
+    //then take the data received and parse it into the localStorage as strings
+    const updateFavesList = [...favesList, favourite];
+    localStorage.setItem("favourites", JSON.stringify(updateFavesList));
+  };
+
   return (
     <>
       {/* <div className="container"> */}
@@ -70,7 +89,13 @@ export default function Podcast({ onPlay }) {
                   <h3>{episode.title}</h3>
                   <p>{episode.description}</p>
                   <button onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}>
-                    <button>Add to Favourites</button>
+                    <button
+                      onClick={() =>
+                        handleFaves(episode, podcast, selectedSeason)
+                      }
+                    >
+                      Add to Favourites
+                    </button>
                     Play Epidsode
                   </button>
                 </div>
