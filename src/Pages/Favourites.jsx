@@ -20,10 +20,13 @@ export default function Favourites() {
   };
 
   return (
-    <>
-      <div>
-        {/* map through the favourites to display favourites' item's info */}
-        {favourites.map((faves) => (
+    //if there are no favourites, display p tag otherwise display the favourites episode
+    <div>
+      <h2>Favourites:</h2>
+      {favourites.length === 0 ? (
+        <p>You have no favourites yet.</p>
+      ) : (
+        favourites.map((faves) => (
           <div key={faves.id}>
             <h2>{faves.showTitle}</h2>
             <img src={faves.image} />
@@ -34,8 +37,8 @@ export default function Favourites() {
               Remove from favourites
             </button>
           </div>
-        ))}
-      </div>
-    </>
+        ))
+      )}
+    </div>
   );
 }
