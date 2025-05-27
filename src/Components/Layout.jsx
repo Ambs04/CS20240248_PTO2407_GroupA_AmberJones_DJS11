@@ -1,17 +1,17 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
-import SortBy from "./SortBy";
+//import SortBy from "./SortBy";
 
-export default function Layout({ setSortingOrder, setGenreFilter }) {
+export default function Layout({ children }) {
   return (
     <>
       <Header />
 
-      <SortBy
+      {/* <SortBy
         setSortingOrder={setSortingOrder}
         setGenreFilter={setGenreFilter}
-      />
+      /> */}
 
       <Outlet />
 

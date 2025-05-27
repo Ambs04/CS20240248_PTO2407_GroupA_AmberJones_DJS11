@@ -25,19 +25,16 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Layout
-                setSortingOrder={setSortingOrder}
-                setGenreFilter={setGenreFilter}
-              />
-            }
-          >
+          <Route path="/" element={<Layout />}>
             <Route
               index
               element={
-                <Home sortingOrder={sortingOrder} genreFilter={genreFilter} />
+                <Home
+                  sortingOrder={sortingOrder}
+                  genreFilter={genreFilter}
+                  setSortingOrder={setSortingOrder}
+                  setGenreFilter={setGenreFilter}
+                />
               }
             />
             <Route path="podcast/:id" element={<Podcast onPlay={play} />} />

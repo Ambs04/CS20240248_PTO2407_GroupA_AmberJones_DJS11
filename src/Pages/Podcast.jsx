@@ -24,7 +24,7 @@ export default function Podcast({ onPlay }) {
       .then((data) => {
         console.log(data.seasons);
         setSeasons(data.seasons);
-        selectedSeason(data.seasons);
+        selectedSeason(data.seasons[0]);
       });
   }, [id]);
 

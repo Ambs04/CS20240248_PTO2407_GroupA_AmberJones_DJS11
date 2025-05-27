@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import "./home.css";
+import SortBy from "../Components/SortBy";
 
 import { Link } from "react-router-dom";
 
-export default function Home({ sortingOrder, genreFilter }) {
+export default function Home({
+  sortingOrder,
+  genreFilter,
+  setSortingOrder,
+  setGenreFilter,
+}) {
   const [podState, setPodState] = useState([]);
 
   useEffect(() => {
@@ -19,14 +25,17 @@ export default function Home({ sortingOrder, genreFilter }) {
         )
       );
 
-      const filter = genreFilter
-        ? data.filter((show) => {
-            const details = filterData.find((d) => d.id === show.id);
-            return (
-              details && details.genres && details.genres.includes(genreFilter)
-            );
-          })
-        : data;
+      const filter =
+        genreFilter.length > 0
+          ? data.filter((show) => {
+              const details = filterData.find((d) => d.id === show.id);
+              return (
+                details &&
+                details.genres &&
+                details.genres.some((genre) => genreFilter.includes(genre))
+              );
+            })
+          : data;
 
       const sortData = [...filter].sort((a, b) =>
         sortingOrder === "A-Z"
@@ -41,6 +50,10 @@ export default function Home({ sortingOrder, genreFilter }) {
 
   return (
     <>
+      <SortBy
+        setSortingOrder={setSortingOrder}
+        setGenreFilter={setGenreFilter}
+      />
       <div className="pods">
         {podState.map((pods) => (
           <div key={pods.id} className="pod-card">
