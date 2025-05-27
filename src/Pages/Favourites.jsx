@@ -4,6 +4,9 @@ export default function Favourites() {
   //set state for favourites
   const [favourites, setFavourites] = useState([]);
 
+  //set state to sort favourites
+  const [sort, setSort] = useState([]);
+
   //set state to the favourites list that is fetched from localStorage
   useEffect(() => {
     const storage = JSON.parse(localStorage.getItem("favourites"));
@@ -19,24 +22,32 @@ export default function Favourites() {
     setFavourites(remove);
   };
 
-  //   const filterFavourites = favourites
-  //     .filter((fave) => {
-  //       if (!genreFilter) return fave.genres && fave.genres.includes(genreFilter);
-  //     })
-  //     .sort((a, b) =>
-  //       sortingOrder === "A-Z"
-  //         ? a.episodeTitle.localeCompare(b.episodeTitle)
-  //         : b.episodeTitle.localeCompare(a.episodeTitle)
-  //     );
+  const sortFavourites = [...favourites].sort((a, b) => {
+    if (sort === "A-Z") {
+      return a.episodeTitle.localeCompare(b.episodeTitle);
+    } else if (sort === "Z-A") {
+      return b.episodeTitle.localeCompare(a.episodeTitle);
+    } else if (sort === "Newest") {
+      return b.timeStamp - a.timeStamp;
+    } else if (sort === "Oldest") {
+      return a.timeStamp - b.timeStamp;
+    }
+  });
 
   return (
     //if there are no favourites, display p tag otherwise display the favourites episode
     <div>
+      <div>
+        <button onClick={() => setSort("A-Z")}>Sort A-Z</button>
+        <button onClick={() => setSort("Z-A")}>Sort Z-A</button>
+        <button onClick={() => setSort("Newest")}>Newest to Oldest</button>
+        <button onClick={() => setSort("Oldest")}>Oldest to Newest</button>
+      </div>
       <h2>Favourites:</h2>
-      {favourites.length === 0 ? (
+      {sortFavourites.length === 0 ? (
         <p>You have no favourites yet.</p>
       ) : (
-        favourites.map((faves) => (
+        sortFavourites.map((faves) => (
           <div key={faves.id}>
             <h2>{faves.showTitle}</h2>
             <img src={faves.image} />
