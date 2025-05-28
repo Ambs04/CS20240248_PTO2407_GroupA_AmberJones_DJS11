@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import SortBy from "../Components/SortBy";
+//import SortBy from "../Components/SortBy";
+import { Link } from "react-router-dom";
 
 export default function Favourites() {
   //set state for favourites
@@ -77,6 +78,9 @@ export default function Favourites() {
             <p>Season {faves.season}</p>
             <p>{faves.episodeDesc}</p>
             <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>
+            <Link to={`/podcast/${faves.showId}`}>
+              <button>Go to show</button>
+            </Link>
             <button onClick={() => removeFave(faves.id)}>
               Remove from favourites
             </button>
