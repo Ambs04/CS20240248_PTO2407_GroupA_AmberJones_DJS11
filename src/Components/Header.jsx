@@ -16,9 +16,6 @@ export default function Header() {
             <h3>Favourites</h3>
           </Link>
         </div>
-        <div className="search-container">
-          <input type="text" placeholder="search" className="search-bar" />
-        </div>
       </div>
     </>
   );
