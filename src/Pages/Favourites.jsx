@@ -7,10 +7,28 @@ export default function Favourites() {
   //set state to sort favourites
   const [sort, setSort] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   //set state to the favourites list that is fetched from localStorage
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem("favourites"));
-    setFavourites(storage);
+    const fetchData = async () => {
+      setIsLoading(true);
+
+      setError(null);
+      setTimeout(() => {
+        try {
+          const storage = JSON.parse(localStorage.getItem("favourites"));
+          setFavourites(storage);
+        } catch (err) {
+          console.error("Failed to fetch data", err);
+          setError("Failed to load favourites. Please try again.");
+        } finally {
+          setIsLoading(false);
+        }
+      }, 2000);
+    };
+    fetchData();
   }, []);
 
   const removeFave = (id) => {
@@ -43,6 +61,10 @@ export default function Favourites() {
         <button onClick={() => setSort("Newest")}>Newest to Oldest</button>
         <button onClick={() => setSort("Oldest")}>Oldest to Newest</button>
       </div>
+
+      {isLoading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+
       <h2>Favourites:</h2>
       {sortFavourites.length === 0 ? (
         <p>You have no favourites yet.</p>
