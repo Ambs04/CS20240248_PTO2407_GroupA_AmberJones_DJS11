@@ -1,17 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .header {
   height: 170px;
   width: 100vw;
   margin-bottom: 70px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid black;
+  background-color: #2f3c7e;
 }
 
 .logo-container {
-  display: flex;
-  flex-direction: row;
-  justify-self: start;
-  align-items: center;
+  /* border: 1px solid black; */
+
   margin-left: 50px;
 }
 
@@ -19,26 +25,32 @@
   width: 100px;
   height: 90px;
   object-fit: contain;
+  display: inline;
 }
 
 .website-name {
+  display: inline;
   text-align: center;
+  color: #ebc0c4;
 }
 
-.search-container {
+h3 {
+}
+
+.page-links {
   display: flex;
-  flex-direction: row;
+  gap: 50px;
+  margin-right: 90px;
 }
 
-.search-bar {
-  justify-self: end;
-  align-self: center;
-  margin-left: auto;
-  margin-right: 90px;
-  height: 40px;
-  width: 200px;
-  border: 1px solid lightgrey;
-  border-radius: 15px;
-  background-color: lightgrey;
-  color: rgb(38, 37, 37);
+.home-heading {
+  color: #ebc0c4;
+  display: inline;
+  justify-content: space-around;
+}
+
+.favourite-heading {
+  color: #ebc0c4;
+  display: inline;
+  justify-content: space-around;
 }

@@ -1,23 +1,41 @@
 import "./header.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
+  const styleActive = {
+    fontWeight: "bold",
+    texDecoration: "underline",
+    color: "#f0cccf",
+  };
+
   return (
     <>
       <div className="header">
         <div className="logo-container">
-          <Link to="/">
-            <img src="logo.png" className="logo" />
-          </Link>
-          <h2 className="website-name">PodStar</h2>
+          <NavLink to="/">
+            <span>
+              <img src="logo.png" className="logo" />
+            </span>
+          </NavLink>
+          <span>
+            <h2 className="website-name">PodStar</h2>
+          </span>
         </div>
-        <div>
-          <Link to="/">
-            <h3>Home</h3>
-          </Link>
-          <Link to="favourites">
-            <h3>Favourites</h3>
-          </Link>
+        <div className="page-links">
+          <NavLink
+            to="/"
+            style={({ isActive }) => (isActive ? styleActive : null)}
+          >
+            <span>
+              <h3 className="home-heading">Home</h3>
+            </span>
+          </NavLink>
+          <NavLink
+            to="favourites"
+            style={({ isActive }) => (isActive ? styleActive : null)}
+          >
+            <h3 className="favourite-heading">Favourites</h3>
+          </NavLink>
         </div>
       </div>
     </>
