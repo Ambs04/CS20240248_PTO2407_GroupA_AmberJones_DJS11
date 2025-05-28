@@ -62,13 +62,13 @@ export default function SortBy({ setSortingOrder, setGenreFilter }) {
             ))}
           </select>
         </div>
-      </div>
 
-      <div className="sort-group">
-        <select onChange={handleSort}>
-          <option value="A-Z">Sort A to Z</option>
-          <option value="Z-A"> Sort Z to A</option>
-        </select>
+        <div className="sort-group">
+          <select onChange={handleSort}>
+            <option value="A-Z">Sort A to Z</option>
+            <option value="Z-A"> Sort Z to A</option>
+          </select>
+        </div>
       </div>
     </>
   );
