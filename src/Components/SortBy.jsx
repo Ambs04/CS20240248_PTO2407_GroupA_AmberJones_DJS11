@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./sortby.css";
 
 export default function SortBy({ setSortingOrder, setGenreFilter }) {
   // //set state
@@ -34,19 +35,40 @@ export default function SortBy({ setSortingOrder, setGenreFilter }) {
       });
   }, []);
 
+  const handleGenre = (event) => {
+    const selected = event.target.value;
+    if (selected === "") {
+      setGenreFilter([]);
+    } else {
+      setGenreFilter([selected]);
+    }
+  };
+
+  const handleSort = (event) => {
+    setSortingOrder(event.target.value);
+  };
+
   return (
     <>
-      <div>
-        {/* map over the genre state and produce a button for each genre type */}
-        {genres.map((genre) => (
-          <button key={genre} onClick={() => setGenreFilter(genre)}>
-            {genre}
-          </button>
-        ))}
+      <div className="sort-containers">
+        <div className="genre-group">
+          <select onChange={handleGenre}>
+            {/* map over the genre state and produce a button for each genre type */}
+            <option value="">All Genres</option>
+            {genres.map((genre) => (
+              <option key={genre} value={genre}>
+                {genre}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <div>
-        <button onClick={() => setSortingOrder("A-Z")}>Sort A to Z</button>
-        <button onClick={() => setSortingOrder("Z-A")}> Sort Z to A</button>
+
+      <div className="sort-group">
+        <select onChange={handleSort}>
+          <option value="A-Z">Sort A to Z</option>
+          <option value="Z-A"> Sort Z to A</option>
+        </select>
       </div>
     </>
   );

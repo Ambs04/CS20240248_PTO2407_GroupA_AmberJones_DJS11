@@ -67,14 +67,14 @@ export default function Home({
         setGenreFilter={setGenreFilter}
       />
 
-      <button
+      {/* <button
         onClick={() => {
           setGenreFilter([]);
           setSortingOrder("A-Z");
         }}
       >
         Clear filters
-      </button>
+      </button> */}
 
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
