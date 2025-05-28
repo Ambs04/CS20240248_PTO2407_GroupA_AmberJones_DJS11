@@ -5,7 +5,7 @@ export default function Header() {
   const styleActive = {
     fontWeight: "bold",
     texDecoration: "underline",
-    color: "#f0cccf",
+    color: "#ffffff",
   };
 
   return (
