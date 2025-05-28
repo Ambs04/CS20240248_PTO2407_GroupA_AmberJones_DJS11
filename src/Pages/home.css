@@ -4,24 +4,59 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #ffffff;
+}
+
 .pods {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
+  justify-content: center;
+  gap: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .pod-card {
-  width: 200px;
-  padding: 60px;
+  width: 100%;
+  height: auto;
+  padding: 30px;
   margin-left: auto;
   margin-right: auto;
+  border: 2px solid #2f3c7e;
+  border-radius: 15px;
 }
 
 .pod-img {
-  width: 100%;
-  justify-content: center;
+  width: 75%;
+  height: auto;
+  display: block;
+  justify-self: center;
+  object-fit: cover;
 }
 
 .pod-title {
   text-decoration: underline;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: rgb(22, 22, 72);
+}
+
+.pod-title:hover {
+  cursor: pointer;
+  color: #2f3c7e;
+}
+
+.pod-desc {
+  color: rgb(22, 22, 72);
+
+  font-weight: bold;
+  padding-bottom: 35px;
+}
+
+.pod-season {
+  color: rgb(22, 22, 72);
+  font-weight: bold;
 }

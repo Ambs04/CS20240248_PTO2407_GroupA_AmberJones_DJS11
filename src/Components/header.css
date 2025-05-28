@@ -25,12 +25,9 @@
   width: 100px;
   height: 90px;
   object-fit: contain;
-  display: inline;
 }
 
 .website-name {
-  display: inline;
-  text-align: center;
   color: #ebc0c4;
 }
 

@@ -27,14 +27,14 @@ export default function Header() {
             style={({ isActive }) => (isActive ? styleActive : null)}
           >
             <span>
-              <h3 className="home-heading">Home</h3>
+              <h2 className="home-heading">Home</h2>
             </span>
           </NavLink>
           <NavLink
             to="favourites"
             style={({ isActive }) => (isActive ? styleActive : null)}
           >
-            <h3 className="favourite-heading">Favourites</h3>
+            <h2 className="favourite-heading">Favourites</h2>
           </NavLink>
         </div>
       </div>

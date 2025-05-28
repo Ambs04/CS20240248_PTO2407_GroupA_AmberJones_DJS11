@@ -86,9 +86,11 @@ export default function Home({
               <img src={pods.image} alt="podcast image" className="pod-img" />
             </Link>
             <div>
-              <h3 className="pod-title">{pods.title}</h3>
+              <Link to={`/podcast/${pods.id}`}>
+                <h3 className="pod-title">{pods.title}</h3>
+              </Link>
               <p className="pod-desc">{pods.description.slice(0, 200)} ...</p>
-              <p>Seasons Available: {pods.seasons}</p>
+              <p className="pod-season">Seasons Available: {pods.seasons}</p>
             </div>
           </div>
         ))}
