@@ -8,15 +8,28 @@ export default function Podcast({ onPlay }) {
   const [podcast, setPodcast] = useState([]);
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const [openSeason, setOpenSeason] = useState(null);
   useEffect(() => {
-    fetch("https://podcast-api.netlify.app/")
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const res = await fetch("https://podcast-api.netlify.app/");
+        const data = await res.json();
+
         const selectedId = data.find((podcast) => podcast.id === id);
         setPodcast(selectedId);
-      });
+      } catch (err) {
+        console.error("Failed to fetch data:", err);
+        setError("Failed to load show. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
   }, [id]);
 
   useEffect(() => {
@@ -56,6 +69,8 @@ export default function Podcast({ onPlay }) {
   return (
     <>
       {/* <div className="container"> */}
+      {isLoading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
       <div className="pod-container">
         <div className="image-container">
           <img src={selectedSeason?.image || podcast.image} className="image" />
