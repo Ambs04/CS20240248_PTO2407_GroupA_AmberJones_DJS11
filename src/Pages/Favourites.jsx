@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import SortBy from "../Components/SortBy";
 
 export default function Favourites() {
   //set state for favourites
@@ -56,10 +57,10 @@ export default function Favourites() {
     //if there are no favourites, display p tag otherwise display the favourites episode
     <div>
       <div>
-        <button onClick={() => setSort("A-Z")}>Sort A-Z</button>
-        <button onClick={() => setSort("Z-A")}>Sort Z-A</button>
+        <SortBy setSortingOrder={setSort} />
         <button onClick={() => setSort("Newest")}>Newest to Oldest</button>
         <button onClick={() => setSort("Oldest")}>Oldest to Newest</button>
+        <button onClick={() => setSort("")}>Clear sort</button>
       </div>
 
       {isLoading && <p>Loading...</p>}
