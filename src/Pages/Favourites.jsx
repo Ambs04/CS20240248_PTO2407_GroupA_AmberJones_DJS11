@@ -57,7 +57,6 @@ export default function Favourites() {
     //if there are no favourites, display p tag otherwise display the favourites episode
     <div>
       <div>
-        <SortBy setSortingOrder={setSort} />
         <button onClick={() => setSort("Newest")}>Newest to Oldest</button>
         <button onClick={() => setSort("Oldest")}>Oldest to Newest</button>
         <button onClick={() => setSort("")}>Clear sort</button>
