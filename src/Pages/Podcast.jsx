@@ -9,6 +9,7 @@ export default function Podcast({ onPlay }) {
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState([]);
 
+  const [openSeason, setOpenSeason] = useState(null);
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/")
       .then((res) => res.json())
@@ -48,6 +49,10 @@ export default function Podcast({ onPlay }) {
     localStorage.setItem("favourites", JSON.stringify(updateFavesList));
   };
 
+  const toggleSeason = (seasonId) => {
+    setOpenSeason((prevId) => (prevId === seasonId ? null : seasonId));
+  };
+
   return (
     <>
       {/* <div className="container"> */}
@@ -76,33 +81,31 @@ export default function Podcast({ onPlay }) {
           </span>
         </div>
         <div className="show">
-          {seasons.map((season) => (
-            <>
-              <button
-                key={season.id}
-                className={selectedSeason?.id === season.id ? "active" : ""}
-                onClick={() => setSelectedSeason(season)}
-              >
-                <div>Season {season.season}:</div>
+          {seasons.map((season, seasonId) => (
+            <div key={season.id}>
+              <button onClick={() => toggleSeason(seasonId)}>
+                {openSeason === seasonId ? "▼" : "►"}Season {season.season}
               </button>
-              {season.episodes.map((episode) => (
-                <div key={episode.id} className="episodes">
-                  <p>Episode{episode.episode}</p>
-                  <h3>{episode.title}</h3>
-                  <p>{episode.description}</p>
-                  <button onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}>
-                    Play Epidsode
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleFaves(episode, podcast, selectedSeason)
-                    }
-                  >
-                    Add to Favourites
-                  </button>
+              {openSeason === seasonId && (
+                <div>
+                  {season.episodes.map((episode) => (
+                    <div key={episode.id} className="episodes">
+                      <p>Episode{episode.episode}</p>
+                      <h3>{episode.title}</h3>
+                      <p>{episode.description}</p>
+                      <button onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}>
+                        Play Epidsode
+                      </button>
+                      <button
+                        onClick={() => handleFaves(episode, podcast, season)}
+                      >
+                        Add to Favourites
+                      </button>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </>
+              )}
+            </div>
           ))}
         </div>
       </div>
