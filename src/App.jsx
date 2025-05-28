@@ -4,7 +4,7 @@ import Home from "./Pages/Home";
 import Layout from "./Components/Layout";
 import Podcast from "./Pages/Podcast";
 import Player from "./Components/Player";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Favourites from "./Pages/Favourites";
 //import SortBy from "./Components/SortBy";
 
@@ -21,6 +21,18 @@ function App() {
     setPlayKey((prev) => prev + 1);
     setIsActive(true);
   };
+
+  useEffect(() => {
+    const handle = (event) => {
+      if (isActive) {
+        event.preventDefault();
+      }
+    };
+
+    window.addEventListener("beforeunload", handle);
+
+    return () => window.removeEventListener("beforeunload", handle);
+  }, [isActive]);
 
   return (
     <>
