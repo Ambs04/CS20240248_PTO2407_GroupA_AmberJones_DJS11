@@ -101,6 +101,7 @@ export default function Podcast({ onPlay }) {
               <button onClick={() => toggleSeason(seasonId)}>
                 {openSeason === seasonId ? "▼" : "►"}Season {season.season}
               </button>
+
               {openSeason === seasonId && (
                 <div>
                   {season.episodes.map((episode) => (
