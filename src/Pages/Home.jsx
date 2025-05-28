@@ -12,38 +12,50 @@ export default function Home({
 }) {
   const [podState, setPodState] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://podcast-api.netlify.app/");
-      const data = await res.json();
+      setIsLoading(true);
+      setError(null);
+      try {
+        const res = await fetch("https://podcast-api.netlify.app/");
+        const data = await res.json();
 
-      const filterData = await Promise.all(
-        data.map((show) =>
-          fetch(`https://podcast-api.netlify.app/id/${show.id}`).then((res) =>
-            res.json()
+        const filterData = await Promise.all(
+          data.map((show) =>
+            fetch(`https://podcast-api.netlify.app/id/${show.id}`).then((res) =>
+              res.json()
+            )
           )
-        )
-      );
+        );
 
-      const filter =
-        genreFilter.length > 0
-          ? data.filter((show) => {
-              const details = filterData.find((d) => d.id === show.id);
-              return (
-                details &&
-                details.genres &&
-                details.genres.some((genre) => genreFilter.includes(genre))
-              );
-            })
-          : data;
+        const filter =
+          genreFilter.length > 0
+            ? data.filter((show) => {
+                const details = filterData.find((d) => d.id === show.id);
+                return (
+                  details &&
+                  details.genres &&
+                  details.genres.some((genre) => genreFilter.includes(genre))
+                );
+              })
+            : data;
 
-      const sortData = [...filter].sort((a, b) =>
-        sortingOrder === "A-Z"
-          ? a.title.localeCompare(b.title)
-          : b.title.localeCompare(a.title)
-      );
+        const sortData = [...filter].sort((a, b) =>
+          sortingOrder === "A-Z"
+            ? a.title.localeCompare(b.title)
+            : b.title.localeCompare(a.title)
+        );
 
-      setPodState(sortData);
+        setPodState(sortData);
+      } catch (err) {
+        console.error("Failed to fetch data:", err);
+        setError("Failed to load podcasts. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchData();
   }, [sortingOrder, genreFilter]);
@@ -54,6 +66,10 @@ export default function Home({
         setSortingOrder={setSortingOrder}
         setGenreFilter={setGenreFilter}
       />
+
+      {isLoading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+
       <div className="pods">
         {podState.map((pods) => (
           <div key={pods.id} className="pod-card">

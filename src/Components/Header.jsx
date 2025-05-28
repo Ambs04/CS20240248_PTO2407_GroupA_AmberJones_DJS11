@@ -12,6 +12,9 @@ export default function Header() {
           <h2 className="website-name">PodStar</h2>
         </div>
         <div>
+          <Link to="/">
+            <h3>Home</h3>
+          </Link>
           <Link to="favourites">
             <h3>Favourites</h3>
           </Link>
