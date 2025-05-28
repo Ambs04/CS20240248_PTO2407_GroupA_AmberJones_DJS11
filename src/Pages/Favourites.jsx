@@ -79,9 +79,15 @@ export default function Favourites() {
             <p>{faves.episodeDesc}</p>
             <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>
             <Link to={`/podcast/${faves.showId}`}>
-              <button>Go to show</button>
+              <button>See show</button>
             </Link>
-            <button onClick={() => removeFave(faves.id)}>
+            <button
+              onClick={() => {
+                if (confirm("Remove from favourites?")) {
+                  removeFave(faves.id);
+                }
+              }}
+            >
               Remove from favourites
             </button>
           </div>

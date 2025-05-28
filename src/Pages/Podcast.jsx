@@ -113,7 +113,10 @@ export default function Podcast({ onPlay }) {
                         Play Epidsode
                       </button>
                       <button
-                        onClick={() => handleFaves(episode, podcast, season)}
+                        onClick={() => {
+                          handleFaves(episode, podcast, season);
+                          alert("Added to favourites!");
+                        }}
                       >
                         Add to Favourites
                       </button>
