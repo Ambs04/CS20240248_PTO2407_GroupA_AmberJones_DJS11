@@ -10,19 +10,25 @@ export default function Home({
   setSortingOrder,
   setGenreFilter,
 }) {
+  //set podcast state
   const [podState, setPodState] = useState([]);
-
+  //set loading state
   const [isLoading, setIsLoading] = useState(false);
+  //set error state
   const [error, setError] = useState(null);
 
+  //fetch data each time data is sorted or filtered through
   useEffect(() => {
     const fetchData = async () => {
+      //loading state active
       setIsLoading(true);
+      //error inactive
       setError(null);
       try {
         const res = await fetch("https://podcast-api.netlify.app/");
         const data = await res.json();
 
+        //fetch data from id endpoint API and assign it to variable (all promise must first be fulfilled)
         const filterData = await Promise.all(
           data.map((show) =>
             fetch(`https://podcast-api.netlify.app/id/${show.id}`).then((res) =>
@@ -31,9 +37,11 @@ export default function Home({
           )
         );
 
+        //filter through the fetched data
         const filter =
           genreFilter.length > 0
             ? data.filter((show) => {
+                //find shows ids that share genre filter
                 const details = filterData.find((d) => d.id === show.id);
                 return (
                   details &&
@@ -43,20 +51,26 @@ export default function Home({
               })
             : data;
 
+        //sort the filtered data in ascending or descending order
         const sortData = [...filter].sort((a, b) =>
           sortingOrder === "A-Z"
             ? a.title.localeCompare(b.title)
             : b.title.localeCompare(a.title)
         );
 
+        //update podcast state with the sorted data
         setPodState(sortData);
       } catch (err) {
         console.error("Failed to fetch data:", err);
+        //update error state if error is encountered
         setError("Failed to load podcasts. Please try again.");
       } finally {
+        //loading is inactive
         setIsLoading(false);
       }
     };
+
+    //call async function
     fetchData();
   }, [sortingOrder, genreFilter]);
 
@@ -66,15 +80,6 @@ export default function Home({
         setSortingOrder={setSortingOrder}
         setGenreFilter={setGenreFilter}
       />
-
-      {/* <button
-        onClick={() => {
-          setGenreFilter([]);
-          setSortingOrder("A-Z");
-        }}
-      >
-        Clear filters
-      </button> */}
 
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
