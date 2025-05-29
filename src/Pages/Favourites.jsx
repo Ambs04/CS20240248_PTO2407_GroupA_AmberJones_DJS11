@@ -22,21 +22,20 @@ export default function Favourites() {
       //error state inactive
       setError(null);
       //simulate delay
-      setTimeout(() => {
-        try {
-          //fetch favourites list from local storage
-          const storage = JSON.parse(localStorage.getItem("favourites"));
-          //store favourites list in favourites state
-          setFavourites(storage);
-        } catch (err) {
-          console.error("Failed to fetch data", err);
-          //error state active
-          setError("Failed to load favourites. Please try again.");
-        } finally {
-          //loading state inactive
-          setIsLoading(false);
-        }
-      }, 2000);
+
+      try {
+        //fetch favourites list from local storage
+        const storage = JSON.parse(localStorage.getItem("favourites"));
+        //store favourites list in favourites state
+        setFavourites(storage);
+      } catch (err) {
+        console.error("Failed to fetch data", err);
+        //error state active
+        setError("Failed to load favourites. Please try again.");
+      } finally {
+        //loading state inactive
+        setIsLoading(false);
+      }
     };
 
     //call async function
