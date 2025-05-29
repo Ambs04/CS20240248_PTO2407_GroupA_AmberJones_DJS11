@@ -14,8 +14,8 @@ body {
   grid-template-rows: auto;
   justify-content: center;
   gap: 15px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: 90px;
+  margin-right: 90px;
   margin-top: 50px;
   margin-bottom: 50px;
 }

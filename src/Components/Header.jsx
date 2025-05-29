@@ -14,7 +14,7 @@ export default function Header() {
         <div className="logo-container">
           <NavLink to="/">
             <span>
-              <img src="logo.png" className="logo" />
+              <img src="/podStar.png" className="logo" />
             </span>
           </NavLink>
           <span>
