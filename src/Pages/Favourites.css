@@ -1,6 +1,8 @@
 .newest-btn,
 .oldest-btn,
-.clear-btn {
+.clear-btn,
+.season-sort-btn,
+.show-btn {
   display: inline-block;
   margin-left: 15px;
   padding: 5px;
