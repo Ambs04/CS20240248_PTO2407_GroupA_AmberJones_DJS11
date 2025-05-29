@@ -29,3 +29,17 @@
   font-size: larger;
   color: #ffffff;
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 768px) {
+  .footer-container {
+    height: 10vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    height: 15vh;
+  }
+}
