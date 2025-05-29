@@ -58,7 +58,7 @@ export default function Favourites() {
   return (
     //if there are no favourites, display p tag otherwise display the favourites episode
     <div>
-      <div>
+      <div className="btns">
         <button className="newest-btn" onClick={() => setSort("Newest")}>
           Newest to Oldest
         </button>
@@ -77,29 +77,30 @@ export default function Favourites() {
       {sortFavourites.length === 0 ? (
         <p>You have no favourites yet.</p>
       ) : (
-        sortFavourites.map((faves) => (
-          <div key={faves.id}>
-            <h2>{faves.showTitle}</h2>
-            <img src={faves.image} />
-            <h3>{faves.episodeTitle}</h3>
-            <p>Season {faves.season}</p>
-            <p>Episode {faves.episode}</p>
-            <p>{faves.episodeDesc}</p>
-            <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>
-            <Link to={`/podcast/${faves.showId}`}>
-              <button>See show</button>
-            </Link>
-            <button
-              onClick={() => {
-                if (confirm("Remove from favourites?")) {
-                  removeFave(faves.id);
-                }
-              }}
-            >
-              Remove from favourites
-            </button>
-          </div>
-        ))
+        <div className="faves-container">
+          {sortFavourites.map((faves) => (
+            <div key={faves.id} className="faves-card">
+              <h2>{faves.showTitle}</h2>
+              <img src={faves.image} className="fave-img" />
+              <h3>{faves.episodeTitle}</h3>
+              <p>Season {faves.season}</p>
+              <p>{faves.episodeDesc}</p>
+              <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>
+              <Link to={`/podcast/${faves.showId}`}>
+                <button>See show</button>
+              </Link>
+              <button
+                onClick={() => {
+                  if (confirm("Remove from favourites?")) {
+                    removeFave(faves.id);
+                  }
+                }}
+              >
+                Remove from favourites
+              </button>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

@@ -1,0 +1,44 @@
+.newest-btn,
+.oldest-btn,
+.clear-btn {
+  display: inline-block;
+
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid #2f3c7e;
+  background-color: #aab4ea;
+  cursor: pointer;
+}
+
+.btns {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faves-container {
+  margin-top: 45px;
+  margin-bottom: 45px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faves-card {
+  border: 1px solid #2f3c7e;
+  border-radius: 10px;
+}
+
+.faves-card > img {
+  width: 60px;
+}
+
+.faves-card h2 {
+}
+
+.faves-card h3 {
+}
+
+.faves-card p {
+}
+
+.faves-card button {
+}
