@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./sortby.css";
 
 export default function SortBy({ setSortingOrder, setGenreFilter }) {
-  // //set state
+  //set state for unique genres
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function SortBy({ setSortingOrder, setGenreFilter }) {
           )
         );
 
-        //create new set that will hold all the genres
+        //create new set that will hold all the unique genres
         const genresSet = new Set();
         //iterate over the showGenres array of promises to return the genres from each show
         showGenres.forEach((show) => {
@@ -35,16 +35,20 @@ export default function SortBy({ setSortingOrder, setGenreFilter }) {
       });
   }, []);
 
+  //event handlers for genre filters and sort
   const handleGenre = (event) => {
     const selected = event.target.value;
+    //if 'All geres' are selected then the filters reset
     if (selected === "") {
       setGenreFilter([]);
+      //else the selected genre filter will be applied
     } else {
       setGenreFilter([selected]);
     }
   };
 
   const handleSort = (event) => {
+    //selected sort order will be applied
     setSortingOrder(event.target.value);
   };
 
