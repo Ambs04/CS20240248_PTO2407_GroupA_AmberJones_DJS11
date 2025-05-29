@@ -90,7 +90,9 @@ export default function Home({
                 <h3 className="pod-title">{pods.title}</h3>
               </Link>
               <p className="pod-desc">{pods.description.slice(0, 200)} ...</p>
-              <p className="pod-season">Seasons Available: {pods.seasons}</p>
+              <p className="pod-season">
+                <i>Seasons Available: {pods.seasons}</i>
+              </p>
             </div>
           </div>
         ))}
