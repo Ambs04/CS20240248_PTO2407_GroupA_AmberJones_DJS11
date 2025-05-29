@@ -91,6 +91,7 @@ export default function Favourites() {
               <img src={faves.image} className="fave-img" />
               <h3>{faves.episodeTitle}</h3>
               <p>Season {faves.season}:</p>
+              <p>Episode {faves.id}</p>
 
               <p>{faves.episodeDesc}</p>
               <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>

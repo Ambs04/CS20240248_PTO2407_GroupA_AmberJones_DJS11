@@ -65,7 +65,6 @@ export default function Podcast({ onPlay }) {
       image: season.image,
       episodeTitle: episode.title,
       episodeDesc: episode.description,
-      episode: episode.episode,
       season: season.season,
       showId: podcast.id,
       showTitle: podcast.title,
@@ -117,7 +116,7 @@ export default function Podcast({ onPlay }) {
                 <div>
                   {season.episodes.map((episode) => (
                     <div key={episode.id} className="episodes">
-                      <h2>Episode{episode.episode}</h2>
+                      <h2>Episode {episode.episode}</h2>
                       <h3>{episode.title}</h3>
                       <p>{episode.description}</p>
 
