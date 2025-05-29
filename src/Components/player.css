@@ -1,0 +1,12 @@
+.audio-wrapper {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  width: 100vw;
+}
+
+.player {
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+}
