@@ -1,36 +1,45 @@
 import { useState, useEffect } from "react";
-//import SortBy from "../Components/SortBy";
 import { Link } from "react-router-dom";
 import "./favourites.css";
 
 export default function Favourites() {
-  //set state for favourites
+  //set state for favourites storage
   const [favourites, setFavourites] = useState([]);
 
-  //set state to sort favourites
+  //set state to sort favourites storage
   const [sort, setSort] = useState([]);
 
+  //set loading state storage
   const [isLoading, setIsLoading] = useState(false);
+  //set error state storage
   const [error, setError] = useState(null);
 
   //set state to the favourites list that is fetched from localStorage
   useEffect(() => {
     const fetchData = async () => {
+      //loading state active
       setIsLoading(true);
-
+      //error state inactive
       setError(null);
+      //simulate delay
       setTimeout(() => {
         try {
+          //fetch favourites list from local storage
           const storage = JSON.parse(localStorage.getItem("favourites"));
+          //store favourites list in favourites state
           setFavourites(storage);
         } catch (err) {
           console.error("Failed to fetch data", err);
+          //error state active
           setError("Failed to load favourites. Please try again.");
         } finally {
+          //loading state inactive
           setIsLoading(false);
         }
       }, 2000);
     };
+
+    //call async function
     fetchData();
   }, []);
 

@@ -86,8 +86,8 @@ export default function Podcast({ onPlay }) {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {isLoading && <p className="pod-loading">Loading...</p>}
+      {error && <p className="pod-error">{error}</p>}
       <div className="pod-container">
         <div className="image-container">
           <img src={selectedSeason?.image || podcast.image} className="image" />

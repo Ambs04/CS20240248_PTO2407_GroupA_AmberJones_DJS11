@@ -82,8 +82,8 @@ export default function Home({
         setGenreFilter={setGenreFilter}
       />
 
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {isLoading && <p className="home-loading">Loading...</p>}
+      {error && <p className="home-error">{error}</p>}
 
       <div className="pods">
         {podState.map((pods) => (
