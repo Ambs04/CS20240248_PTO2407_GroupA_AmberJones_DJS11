@@ -49,6 +49,7 @@ export default function Podcast({ onPlay }) {
       image: season.image,
       episodeTitle: episode.title,
       episodeDesc: episode.description,
+      episode: episode.episode,
       season: season.season,
       showId: podcast.id,
       showTitle: podcast.title,
@@ -105,9 +106,13 @@ export default function Podcast({ onPlay }) {
                       <p>{episode.description}</p>
                       <button
                         className="play-btn"
-                        onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}
+                        onClick={() =>
+                          onPlay(
+                            "https://podcast-api.netlify.app/placeholder-audio.mp3"
+                          )
+                        }
                       >
-                        Play Epidsode
+                        Play Episode
                       </button>
                       <button
                         className="fav-btn"

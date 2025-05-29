@@ -9,7 +9,9 @@ import Favourites from "./Pages/Favourites";
 //import SortBy from "./Components/SortBy";
 
 function App() {
-  const [audio] = useState("/Dont_Go_Way_Nobody.mp3");
+  const [audio] = useState(
+    "https://podcast-api.netlify.app/placeholder-audio.mp3"
+  );
   const [playKey, setPlayKey] = useState(0);
   const [isActive, setIsActive] = useState(false);
 

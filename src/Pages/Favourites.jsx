@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 //import SortBy from "../Components/SortBy";
 import { Link } from "react-router-dom";
+import "./favourites.css";
 
 export default function Favourites() {
   //set state for favourites
@@ -58,9 +59,15 @@ export default function Favourites() {
     //if there are no favourites, display p tag otherwise display the favourites episode
     <div>
       <div>
-        <button onClick={() => setSort("Newest")}>Newest to Oldest</button>
-        <button onClick={() => setSort("Oldest")}>Oldest to Newest</button>
-        <button onClick={() => setSort("")}>Clear sort</button>
+        <button className="newest-btn" onClick={() => setSort("Newest")}>
+          Newest to Oldest
+        </button>
+        <button className="oldest-btn" onClick={() => setSort("Oldest")}>
+          Oldest to Newest
+        </button>
+        <button className="clear-btn" onClick={() => setSort("")}>
+          Clear sort
+        </button>
       </div>
 
       {isLoading && <p>Loading...</p>}
@@ -76,6 +83,7 @@ export default function Favourites() {
             <img src={faves.image} />
             <h3>{faves.episodeTitle}</h3>
             <p>Season {faves.season}</p>
+            <p>Episode {faves.episode}</p>
             <p>{faves.episodeDesc}</p>
             <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>
             <Link to={`/podcast/${faves.showId}`}>
