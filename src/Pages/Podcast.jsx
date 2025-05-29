@@ -85,20 +85,14 @@ export default function Podcast({ onPlay }) {
               {new Date(podcast.updated).toLocaleDateString("en-ZA")}
             </p>
           )}
-          <span>
-            <img
-              src="/play-button-svgrepo-com.svg"
-              className="play-btn"
-              onClick={() => {
-                onPlay("/Dont_Go_Way_Nobody.mp3");
-              }}
-            />
-          </span>
         </div>
         <div className="show">
           {seasons.map((season, seasonId) => (
             <div key={season.id}>
-              <button onClick={() => toggleSeason(seasonId)}>
+              <button
+                className="season-btn"
+                onClick={() => toggleSeason(seasonId)}
+              >
                 {openSeason === seasonId ? "▼" : "►"}Season {season.season}
               </button>
 
@@ -109,10 +103,14 @@ export default function Podcast({ onPlay }) {
                       <p>Episode{episode.episode}</p>
                       <h3>{episode.title}</h3>
                       <p>{episode.description}</p>
-                      <button onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}>
+                      <button
+                        className="play-btn"
+                        onClick={() => onPlay("/Dont_Go_Way_Nobody.mp3")}
+                      >
                         Play Epidsode
                       </button>
                       <button
+                        className="fav-btn"
                         onClick={() => {
                           handleFaves(episode, podcast, season);
                           alert("Added to favourites!");
