@@ -10,11 +10,11 @@ export default function Home({
   setSortingOrder,
   setGenreFilter,
 }) {
-  //set podcast state
+  //set podcast state storage
   const [podState, setPodState] = useState([]);
-  //set loading state
+  //set loading state storage
   const [isLoading, setIsLoading] = useState(false);
-  //set error state
+  //set error state storage
   const [error, setError] = useState(null);
 
   //fetch data each time data is sorted or filtered through
@@ -25,10 +25,11 @@ export default function Home({
       //error inactive
       setError(null);
       try {
+        //fetch all podcasts
         const res = await fetch("https://podcast-api.netlify.app/");
         const data = await res.json();
 
-        //fetch data from id endpoint API and assign it to variable (all promise must first be fulfilled)
+        //fetch detailed data from id endpoint API and assign it to variable (all promise must first be fulfilled)
         const filterData = await Promise.all(
           data.map((show) =>
             fetch(`https://podcast-api.netlify.app/id/${show.id}`).then((res) =>
@@ -37,7 +38,7 @@ export default function Home({
           )
         );
 
-        //filter through the fetched data
+        //filter through the fetched data, if filters are applied
         const filter =
           genreFilter.length > 0
             ? data.filter((show) => {

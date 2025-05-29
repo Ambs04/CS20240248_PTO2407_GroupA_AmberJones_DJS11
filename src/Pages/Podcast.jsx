@@ -3,35 +3,51 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function Podcast({ onPlay }) {
+  //get pod Id from url params
   const { id } = useParams();
 
+  //set podcast state (basic info) storage
   const [podcast, setPodcast] = useState([]);
+  //set seasons state (episode and season data) storage
   const [seasons, setSeasons] = useState([]);
+  //set selectSeason state storage
   const [selectedSeason, setSelectedSeason] = useState([]);
+  //set loading state
   const [isLoading, setIsLoading] = useState(false);
+  //set error state
   const [error, setError] = useState(null);
-
+  //set open season state (what season is open)
   const [openSeason, setOpenSeason] = useState(null);
+
+  //fetch data from API each time the id changes
   useEffect(() => {
     const fetchData = async () => {
+      //loading is active
       setIsLoading(true);
+      //error state inactive
       setError(null);
       try {
         const res = await fetch("https://podcast-api.netlify.app/");
         const data = await res.json();
 
+        //if the selected id matches one of the podcast id's
         const selectedId = data.find((podcast) => podcast.id === id);
+
         setPodcast(selectedId);
       } catch (err) {
         console.error("Failed to fetch data:", err);
+        //error state active
         setError("Failed to load show. Please try again.");
       } finally {
+        //loading inactive
         setIsLoading(false);
       }
     };
+    //fetch async function
     fetchData();
   }, [id]);
 
+  //fetch data each time id changes (full podcast data)
   useEffect(() => {
     fetch(`https://podcast-api.netlify.app/id/${id}`)
       .then((res) => res.json())
@@ -63,13 +79,13 @@ export default function Podcast({ onPlay }) {
     localStorage.setItem("favourites", JSON.stringify(updateFavesList));
   };
 
+  //toggles visibility of a season (selected season)
   const toggleSeason = (seasonId) => {
     setOpenSeason((prevId) => (prevId === seasonId ? null : seasonId));
   };
 
   return (
     <>
-      {/* <div className="container"> */}
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <div className="pod-container">
@@ -96,7 +112,7 @@ export default function Podcast({ onPlay }) {
               >
                 {openSeason === seasonId ? "▼" : "►"}Season {season.season}
               </button>
-
+              {/* if season id matched selected season, that season's info will be displayed */}
               {openSeason === seasonId && (
                 <div>
                   {season.episodes.map((episode) => (
@@ -131,7 +147,6 @@ export default function Podcast({ onPlay }) {
           ))}
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 }
