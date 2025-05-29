@@ -59,8 +59,6 @@ export default function Favourites() {
       return b.timeStamp - a.timeStamp;
     } else if (sort === "Oldest") {
       return a.timeStamp - b.timeStamp;
-    } else if (sort === "Show Title") {
-      return a.showTitle.localeCompare(b.showTitle);
     }
   });
 
@@ -73,12 +71,6 @@ export default function Favourites() {
         </button>
         <button className="oldest-btn" onClick={() => setSort("Oldest")}>
           Oldest to Newest
-        </button>
-        <button className="season-sort-btn" onClick={() => setSort("Season")}>
-          Sort by Season
-        </button>
-        <button className="show-btn" onClick={() => setSort("Show Title")}>
-          Sort by Show
         </button>
         <button className="clear-btn" onClick={() => setSort("")}>
           Clear sort
