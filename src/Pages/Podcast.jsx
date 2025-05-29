@@ -73,7 +73,7 @@ export default function Podcast({ onPlay }) {
     };
 
     //get the existing favourites from localStorage and parse them to 'favourites'
-    const favesList = JSON.parse(localStorage.getItem("favourites"));
+    const favesList = JSON.parse(localStorage.getItem("favourites")) || [];
     //then take the data received and parse it into the localStorage as strings
     const updateFavesList = [...favesList, favourite];
     localStorage.setItem("favourites", JSON.stringify(updateFavesList));
