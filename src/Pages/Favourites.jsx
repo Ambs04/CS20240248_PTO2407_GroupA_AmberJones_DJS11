@@ -43,9 +43,9 @@ export default function Favourites() {
     fetchData();
   }, []);
 
-  const removeFave = (id) => {
+  const removeFave = (episodeId) => {
     //filter over favourites and find the id, if the item id is equal to the id that must be removed, it will be removed else it will keep the item
-    const remove = favourites.filter((fave) => fave.id !== id);
+    const remove = favourites.filter((fave) => fave.id !== episodeId);
     //update the local storage
     localStorage.setItem("favourites", JSON.stringify(remove));
     //update favourites state
@@ -88,11 +88,12 @@ export default function Favourites() {
       ) : (
         <div className="faves-container">
           {sortFavourites.map((faves) => (
-            <div key={faves.id} className="faves-card">
+            <div key={faves.episodeId} className="faves-card">
               <h2>{faves.showTitle}</h2>
               <img src={faves.image} className="fave-img" />
               <h3>{faves.episodeTitle}</h3>
               <p>Season {faves.season}</p>
+              <p>Episode {faves.episodeId}</p>
               <p>{faves.episodeDesc}</p>
               <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>
               <Link to={`/podcast/${faves.showId}`}>
@@ -102,7 +103,7 @@ export default function Favourites() {
                 <button
                   onClick={() => {
                     if (confirm("Remove from favourites?")) {
-                      removeFave(faves.id);
+                      removeFave(faves.episodeId);
                     }
                   }}
                 >
