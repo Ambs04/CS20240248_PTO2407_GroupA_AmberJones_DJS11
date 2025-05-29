@@ -21,11 +21,10 @@ export default function Favourites() {
       setIsLoading(true);
       //error state inactive
       setError(null);
-      //simulate delay
 
       try {
         //fetch favourites list from local storage
-        const storage = JSON.parse(localStorage.getItem("favourites"));
+        const storage = JSON.parse(localStorage.getItem("favourites")) || [];
         //store favourites list in favourites state
         setFavourites(storage);
       } catch (err) {
@@ -99,7 +98,7 @@ export default function Favourites() {
               <h2>{faves.showTitle}</h2>
               <img src={faves.image} className="fave-img" />
               <h3>{faves.episodeTitle}</h3>
-              <p>Season {faves.season}</p>
+              <p>Season {faves.season}:</p>
 
               <p>{faves.episodeDesc}</p>
               <p>Added: {new Date(faves.timeStamp).toLocaleString()}</p>
