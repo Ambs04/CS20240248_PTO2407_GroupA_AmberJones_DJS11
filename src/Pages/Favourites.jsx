@@ -7,7 +7,7 @@ export default function Favourites() {
   const [favourites, setFavourites] = useState([]);
 
   //set state to sort favourites storage
-  const [sort, setSort] = useState([]);
+  const [sort, setSort] = useState("");
 
   //set loading state storage
   const [isLoading, setIsLoading] = useState(false);
