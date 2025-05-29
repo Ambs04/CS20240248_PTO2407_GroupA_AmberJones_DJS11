@@ -69,6 +69,7 @@
   margin-right: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .play-btn {
@@ -81,6 +82,7 @@
   margin-left: 20px;
   margin-right: 10px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .fav-btn {
@@ -94,6 +96,7 @@
   margin-right: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .show > h2 {
@@ -106,4 +109,66 @@
   margin: 50px;
   text-align: center;
   color: rgb(22, 22, 72);
+}
+
+/* MEDIA QUERIES  */
+
+@media (max-width: 768px) {
+  .pod-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .image-container {
+    padding-right: 20px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: start;
+    width: 100%;
+  }
+
+  .info {
+    box-sizing: border-box;
+    word-wrap: break-word;
+    padding-left: 0px;
+    border-left: 2px solid rgb(22, 22, 72);
+  }
+  .title,
+  .description,
+  .updated-date {
+    padding-left: 15px;
+    text-align: left;
+  }
+
+  .show {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    gap: 15px;
+  }
+  .season-btn,
+  .fav-btn,
+  .play-btn {
+    margin-left: 20px;
+    margin-right: 0;
+  }
+
+  .episodes {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .episodes {
+    width: 70%;
+  }
+  .season-btn,
+  .fav-btn,
+  .play-btn {
+    margin-top: 10px;
+    margin-left: 0;
+  }
 }

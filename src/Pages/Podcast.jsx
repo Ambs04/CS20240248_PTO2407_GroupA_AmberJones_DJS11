@@ -110,7 +110,7 @@ export default function Podcast({ onPlay }) {
                 className="season-btn"
                 onClick={() => toggleSeason(seasonId)}
               >
-                {openSeason === seasonId ? "▼" : "►"}Season {season.season}
+                {openSeason === seasonId ? "▼ " : "► "}Season {season.season}
               </button>
               {/* if season id matched selected season, that season's info will be displayed */}
               {openSeason === seasonId && (
@@ -120,6 +120,7 @@ export default function Podcast({ onPlay }) {
                       <h2>Episode{episode.episode}</h2>
                       <h3>{episode.title}</h3>
                       <p>{episode.description}</p>
+
                       <button
                         className="play-btn"
                         onClick={() =>
