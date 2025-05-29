@@ -70,12 +70,12 @@ export default function Favourites() {
         </button>
       </div>
 
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {isLoading && <p className="fav-loading">Loading...</p>}
+      {error && <p className="fav-error">{error}</p>}
 
-      <h2>Favourites:</h2>
+      <h2 className="heading">Favourites:</h2>
       {sortFavourites.length === 0 ? (
-        <p>You have no favourites yet.</p>
+        <p className="fav-text">You have no favourites yet.</p>
       ) : (
         <div className="faves-container">
           {sortFavourites.map((faves) => (
@@ -89,15 +89,17 @@ export default function Favourites() {
               <Link to={`/podcast/${faves.showId}`}>
                 <button>See show</button>
               </Link>
-              <button
-                onClick={() => {
-                  if (confirm("Remove from favourites?")) {
-                    removeFave(faves.id);
-                  }
-                }}
-              >
-                Remove from favourites
-              </button>
+              <div className="button">
+                <button
+                  onClick={() => {
+                    if (confirm("Remove from favourites?")) {
+                      removeFave(faves.id);
+                    }
+                  }}
+                >
+                  Remove from favourites
+                </button>
+              </div>
             </div>
           ))}
         </div>

@@ -1,8 +1,17 @@
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+
 .footer-container {
   width: 100vw;
   height: 20vh;
   margin-top: auto;
   border-top: 1px solid black;
+  position: absolute;
+
   display: flex;
   flex-direction: column;
   background-color: #2f3c7e;

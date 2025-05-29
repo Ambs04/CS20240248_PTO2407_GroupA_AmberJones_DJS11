@@ -101,7 +101,7 @@ export default function Podcast({ onPlay }) {
                 <div>
                   {season.episodes.map((episode) => (
                     <div key={episode.id} className="episodes">
-                      <p>Episode{episode.episode}</p>
+                      <h2>Episode{episode.episode}</h2>
                       <h3>{episode.title}</h3>
                       <p>{episode.description}</p>
                       <button
